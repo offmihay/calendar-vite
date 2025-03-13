@@ -57,14 +57,13 @@ const HomePage: React.FC = () => {
 
   const handleCreate = (date?: string) => {
     setEditEventId("create");
-    if (date) {
-      setNewEvent({
-        date,
-        description: "",
-        importance: Importance.СOMMON,
-        name: "",
-      });
-    }
+
+    setNewEvent({
+      date: date || new Date().toISOString(),
+      description: "",
+      importance: Importance.СOMMON,
+      name: "",
+    });
   };
 
   const handleClose = () => {
