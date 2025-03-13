@@ -15,9 +15,9 @@ export const useAuthMutation = () => {
   const { fetchData } = useApi();
   const { signIn } = useAuth();
 
-  const loginMutation = useMutation({
+  const signInMutation = useMutation({
     mutationFn: async (body: AuthBody) => {
-      return fetchData(`/auth/login`, { body, method: "POST" });
+      return fetchData(`/auth/signin`, { body, method: "POST" });
     },
     onSuccess: (data: AuthResponse) => {
       signIn(data.token);
@@ -33,5 +33,5 @@ export const useAuthMutation = () => {
     },
   });
 
-  return { loginMutation, signUpMutation };
+  return { signInMutation, signUpMutation };
 };

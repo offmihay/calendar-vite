@@ -43,9 +43,14 @@ const useApi = () => {
         response.headers.get("Content-Type")?.includes("application/json")
           ? await response.json()
           : null;
+
       throw new Error(
         respObj?.message
-          ? JSON.stringify(respObj.message)
+          ? String(
+              Array.isArray(respObj.message)
+                ? respObj.message.join(",\n")
+                : respObj.message
+            )
           : `HTTP error! status: ${response.status}`
       );
     }
